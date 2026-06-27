@@ -1,0 +1,42 @@
+services:
+  mission-control:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    # tsc --noEmit = incremental type-check (uses .tsbuildinfo, fast after first run)
+    # next build   = fast bundling only (TS check skipped via next.config.mjs)
+    entrypoint: >
+      sh -c "
+        npx tsc --noEmit &&
+        npm run build &&
+        npx next start -p 4000
+      "
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    environment:
+      - GIT_ROOT=/git-root
+    volumes:
+      - ./app:/app
+      - mc-node-modules:/app/node_modules
+      - mc-next-build:/app/.next
+      - mc-data:/app/data
+      - mc-workspace:/app/workspace
+      - ${IDENTITY_PATH:-~/.openclaw/identity}:/app/identity:ro
+      - ${GIT_ROOT_PATH:-~/projects/mission-control}:/git-root
+      - ${VAULT_PATH:-~/mission-vault}:/obsidian
+    restart: unless-stopped
+    networks:
+      - openclaw_default
+
+volumes:
+  mc-node-modules:
+  mc-next-build:
+  mc-data:
+  mc-workspace:
+
+networks:
+  openclaw_default:
+    external: true

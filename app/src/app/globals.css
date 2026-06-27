@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --space-bg: #000810;
+  --space-panel: #0a1628;
+  --space-border: #1a3a5c;
+  --space-glow: #00aaff;
+  --space-green: #00ff88;
+  --space-amber: #ffaa00;
+  --space-red: #ff4455;
+  --space-text: #a0c4e0;
+  --space-dim: #4a7a9a;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  background: var(--space-bg);
+  color: var(--space-text);
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: hidden;
+}
+
+/* Scanline overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 20, 40, 0.08) 2px,
+    rgba(0, 20, 40, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Star field */
+.starfield {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: var(--min-op, 0.2); transform: scale(1); }
+  50% { opacity: var(--max-op, 1); transform: scale(1.3); }
+}
+
+/* Room module styling */
+.room-module {
+  position: relative;
+  background: linear-gradient(145deg, #0d1f35 0%, #071422 100%);
+  border: 1px solid var(--space-border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.room-module::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,170,255,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.room-module:hover {
+  border-color: var(--space-glow);
+  box-shadow: 0 0 16px rgba(0,170,255,0.25), inset 0 0 20px rgba(0,170,255,0.04);
+}
+
+.room-module.active {
+  border-color: var(--space-green);
+  box-shadow: 0 0 16px rgba(0,255,136,0.25);
+}
+
+.room-module.error {
+  border-color: var(--space-red);
+  box-shadow: 0 0 16px rgba(255,68,85,0.25);
+}
+
+/* Room header */
+.room-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--space-border);
+  background: rgba(0, 170, 255, 0.04);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--space-glow);
+}
+
+/* Status dots */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.status-dot.idle { background: var(--space-dim); }
+.status-dot.busy { background: var(--space-green); animation: pulse 1.5s ease-in-out infinite; }
+.status-dot.error { background: var(--space-red); animation: pulse 0.8s ease-in-out infinite; }
+.status-dot.online { background: var(--space-glow); animation: pulse 2s ease-in-out infinite; }
+.status-dot.offline { background: var(--space-red); }
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+  50% { box-shadow: 0 0 0 4px transparent; opacity: 0.8; }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--space-border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--space-glow); }
+
+/* HUD grid lines */
+.hud-grid {
+  background-image:
+    linear-gradient(rgba(0,170,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,170,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Kanban */
+.kanban-col {
+  background: rgba(10, 22, 40, 0.7);
+  border: 1px solid var(--space-border);
+  border-radius: 4px;
+  min-height: 120px;
+}
+
+.task-card {
+  background: rgba(0, 170, 255, 0.05);
+  border: 1px solid var(--space-border);
+  border-radius: 3px;
+  padding: 8px 10px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.task-card:hover {
+  border-color: var(--space-glow);
+  background: rgba(0, 170, 255, 0.1);
+  transform: translateY(-1px);
+}
+.task-card.active {
+  border-color: var(--space-green);
+  background: rgba(0, 255, 136, 0.05);
+}
+.task-card.done {
+  border-color: rgba(0, 170, 255, 0.3);
+  opacity: 0.6;
+}
+.task-card.failed {
+  border-color: var(--space-red);
+  background: rgba(255, 68, 85, 0.05);
+}
+
+/* Orbitron headers */
+h1, h2, h3 { font-family: 'Orbitron', sans-serif; }
+
+/* Feed entries */
+.feed-entry {
+  font-size: 0.75rem;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(26, 58, 92, 0.4);
+  line-height: 1.4;
+}
+
+/* Agent avatar */
+.agent-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--space-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  background: rgba(0, 170, 255, 0.08);
+  flex-shrink: 0;
+}
+.agent-avatar.busy {
+  border-color: var(--space-green);
+  box-shadow: 0 0 8px rgba(0,255,136,0.4);
+}
+
+/* Button styles */
+.btn-primary {
+  background: rgba(0, 170, 255, 0.15);
+  border: 1px solid var(--space-glow);
+  color: var(--space-glow);
+  padding: 6px 16px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.05em;
+}
+.btn-primary:hover {
+  background: rgba(0, 170, 255, 0.25);
+  box-shadow: 0 0 12px rgba(0,170,255,0.3);
+}
+.btn-danger {
+  background: rgba(255, 68, 85, 0.1);
+  border: 1px solid var(--space-red);
+  color: var(--space-red);
+}
+.btn-success {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid var(--space-green);
+  color: var(--space-green);
+}
+
+/* Input styles */
+input, textarea, select {
+  background: rgba(0, 17, 40, 0.8);
+  border: 1px solid var(--space-border);
+  color: var(--space-text);
+  font-family: 'Share Tech Mono', monospace;
+  padding: 6px 10px;
+  border-radius: 3px;
+  font-size: 0.82rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--space-glow);
+  box-shadow: 0 0 8px rgba(0,170,255,0.2);
+}
+select option { background: #0a1628; }

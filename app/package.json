@@ -1,0 +1,31 @@
+{
+  "name": "space-mission-control",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 4000",
+    "build": "next build",
+    "start": "next start -p 4000"
+  },
+  "dependencies": {
+    "@types/better-sqlite3": "^7.6.10",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/uuid": "^9.0.7",
+    "@types/ws": "^8.5.10",
+    "autoprefixer": "^10.4.19",
+    "axios": "^1.14.0",
+    "better-sqlite3": "^9.4.3",
+    "next": "14.2.5",
+    "openai": "^6.33.0",
+    "postcss": "^8.4.38",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5",
+    "uuid": "^9.0.1",
+    "ws": "^8.17.0"
+  }
+}

@@ -1,0 +1,16 @@
+# Dependencies
+app/node_modules/
+app/.next/
+
+# Data
+app/data/
+*.db
+
+# Docker volumes
+.env
+
+# OS
+.DS_Store
+
+# Build artifacts
+app/tsconfig.tsbuildinfo

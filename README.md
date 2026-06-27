@@ -1,18 +1,27 @@
-# OpenClaw Command Deck — Mission Control
+# OpenClaw Command Deck - Mission Control
 
 **Version 0.3.0**
 
 A space-station-themed autonomous agent management dashboard built on top of OpenClaw.
 
+---
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/a7a26956-898d-42cb-b306-49a115bdc48d" alt="openclaw-command-deck" width="400">
+</p>
+
+---
+
+
 ## Features
 
-- **Fallout Shelter-style station layout** — rooms, agents, live task status
-- **Agentic task execution** — multi-step ReAct loop with tool use (web search, Python, file I/O, memory, subtask spawning)
-- **ARIA chat bubble** — floating AI assistant (GPT-4o-mini) with full codebase access, git operations, and human-in-the-loop approval for critical actions
-- **Skills registry** — register MCP HTTP servers and custom tools for agents to use
-- **Task file viewer** — browse and download workspace files from any completed task
-- **Real-time SSE updates** — live task steps, agent status, activity log
-- **OpenAI via OpenClaw** — GPT-4o-mini as primary model, local GPU + OpenRouter as fallbacks
+- **Fallout Shelter-style station layout** - rooms, agents, live task status
+- **Agentic task execution** - multi-step ReAct loop with tool use (web search, Python, file I/O, memory, subtask spawning)
+- **ARIA chat bubble** - floating AI assistant (GPT-4o-mini) with full codebase access, git operations, and human-in-the-loop approval for critical actions
+- **Skills registry** - register MCP HTTP servers and custom tools for agents to use
+- **Task file viewer** - browse and download workspace files from any completed task
+- **Real-time SSE updates** - live task steps, agent status, activity log
+- **OpenAI via OpenClaw** - GPT-4o-mini as primary model, local GPU + OpenRouter as fallbacks
 
 ## Stack
 
@@ -86,7 +95,7 @@ The **SKILLS** tab manages tools available to agents:
 | `WORKSPACE_PATH` | Where agent files are saved (default: `/app/workspace`) |
 | `GIT_ROOT` | Mounted project root for ARIA code access (default: `/git-root`) |
 | `DATABASE_PATH` | SQLite DB path (default: `/app/data/mc.db`) |
-| `MISSION_CONTROL_URL` | Public URL of this app — required for Etsy OAuth (default: `http://localhost:4000`) |
+| `MISSION_CONTROL_URL` | Public URL of this app - required for Etsy OAuth (default: `http://localhost:4000`) |
 | `LOCAL_GPU_URL` | Base URL for local GPU/LLM server (default: `http://localhost:11435/v1`) |
 | `COMFY_URL` | ComfyUI server URL for image generation (default: `http://localhost:8188`) |
 | `IDENTITY_PATH` | Host path to OpenClaw identity dir (docker-compose volume) |

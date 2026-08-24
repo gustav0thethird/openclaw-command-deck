@@ -1,0 +1,8 @@
+site_name: openclaw-command-deck
+site_description: Source of truth. Mirrored out to github.com/gustav0thethird/openclaw-command-deck.
+
+plugins:
+  - techdocs-core
+
+nav:
+  - Home: index.md

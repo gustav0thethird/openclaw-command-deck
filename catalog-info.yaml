@@ -2,15 +2,21 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: openclaw-command-deck
-  description: Source of truth. Mirrored out to github.com/gustav0thethird/openclaw-command-deck.
+  description: Mission-control UI for the OpenClaw agent stack
   annotations:
-    # Tells TechDocs the docs live in this repo, built from mkdocs.yml.
     backstage.io/techdocs-ref: dir:.
     gitlab.com/project-slug: yditj/projects/ai/openclaw-command-deck
+  links:
+    - url: https://github.com/gustav0thethird/openclaw-command-deck
+      title: GitHub
+      icon: github
   tags:
+    - typescript
+    - ui
+    - agents
     - ai
 spec:
-  type: service
+  type: website
   lifecycle: production
   owner: gtully
   system: ai

@@ -1,0 +1,70 @@
+{
+  "pages": [
+    {
+      "path": "index.md",
+      "title": "Overview",
+      "globs": [
+        "README.md",
+        "CHANGELOG.md"
+      ],
+      "summary": "An introduction to the OpenClaw Command Deck, its features, and architecture."
+    },
+    {
+      "path": "architecture.md",
+      "title": "Architecture",
+      "globs": [
+        "README.md"
+      ],
+      "summary": "Details the architecture of the application, including the interaction between components."
+    },
+    {
+      "path": "api.md",
+      "title": "API Reference",
+      "globs": [
+        "app/src/app/api/**"
+      ],
+      "summary": "Comprehensive reference for the API endpoints available in the application."
+    },
+    {
+      "path": "agent_management.md",
+      "title": "Agent Management",
+      "globs": [
+        "app/src/app/api/agents/**"
+      ],
+      "summary": "Information on managing agents, including creation, updates, and deletions."
+    },
+    {
+      "path": "task_execution.md",
+      "title": "Task Execution",
+      "globs": [
+        "app/src/app/api/tasks/**"
+      ],
+      "summary": "Overview of how tasks are executed within the system, including the ReAct loop."
+    },
+    {
+      "path": "configuration.md",
+      "title": "Configuration",
+      "globs": [
+        "app/src/app/api/config/**"
+      ],
+      "summary": "Details on configuring the application, including environment variables and settings."
+    },
+    {
+      "path": "chat.md",
+      "title": "ARIA Chat",
+      "globs": [
+        "app/src/app/api/chat/**"
+      ],
+      "summary": "Information on the ARIA chat feature, including its capabilities and usage."
+    },
+    {
+      "path": "deployment.md",
+      "title": "Deployment",
+      "globs": [
+        "Dockerfile",
+        "docker-compose.yml"
+      ],
+      "summary": "Instructions for deploying the application using Docker."
+    }
+  ]
+}

@@ -2,19 +2,22 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: openclaw-command-deck
-  description: Mission-control UI for the OpenClaw agent stack
+  description: A dashboard for managing autonomous agents in a space-station-themed
+    environment using OpenClaw technology.
   annotations:
     backstage.io/techdocs-ref: dir:.
     gitlab.com/project-slug: yditj/projects/ai/openclaw-command-deck
   links:
-    - url: https://github.com/gustav0thethird/openclaw-command-deck
-      title: GitHub
-      icon: github
+  - url: https://github.com/gustav0thethird/openclaw-command-deck
+    title: GitHub
+    icon: github
   tags:
-    - typescript
-    - ui
-    - agents
-    - ai
+  - autonomous-agents
+  - dashboard
+  - openclaw
+  - nextjs
+  - react
+  - ai
 spec:
   type: website
   lifecycle: production
